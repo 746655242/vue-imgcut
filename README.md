@@ -32,7 +32,7 @@ export default {
 	},
 	methods:{
 		callback(img){
-			console.log(img,)
+			console.log(imgss)
 		}
 	}
 	
