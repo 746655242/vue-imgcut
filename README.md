@@ -5,7 +5,7 @@ vue mobile image clipping
 ## Install
 
 ``` bash
-# install dependencies
+
 npm install vue-imgcut --save
 ```
 
