@@ -1,4 +1,4 @@
-# vue-imgCut
+# vue-imgcut
 
 vue mobile image clipping
 
@@ -8,14 +8,14 @@ vue mobile image clipping
 
 ``` bash
 # install dependencies
-npm install vue-imgCut --save
+npm install vue-imgcut --save
 ```
 
 ## Usage
 
 
 ``` javascript
-import {imgCut} from 'vue-imgCut'
+import {imgCut} from 'vue-imgcut'
 
 ```
 
@@ -27,7 +27,6 @@ import {imgCut} from 'vue-imgCut'
 
 
 export default {
-    name: 'picUp',
     components:{
        imgCut
 	},
