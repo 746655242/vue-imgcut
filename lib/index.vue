@@ -390,6 +390,7 @@ export default {
         top:0;
         left:0;
         z-index:99;
+        cursor: pointer;
     }
     #uppicBox{ 
         display: block;

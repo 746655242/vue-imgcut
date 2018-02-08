@@ -16,14 +16,24 @@ npm install vue-imgcut --save
 	<div>上传按钮</div>
 </imgCut>
 
+<img :src="imgsrc">
+
+
+
 import {imgCut} from 'vue-imgcut'
 export default {
+	data(){
+		return{
+			imgsrc:'',
+		}
+	},
 	components:{
 		imgCut
 	},
 	methods:{
 		callback(img){
-			console.log(imgss)
+			thie.imgsrc=img
+			//console.log(imgss)
 		}
 	}
 }
