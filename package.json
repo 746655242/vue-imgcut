@@ -1,6 +1,6 @@
 {
   "name": "vue-imgcut",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "vue mobile image clippings",
   "main": "index.js",
   "scripts": {
