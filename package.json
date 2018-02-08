@@ -1,6 +1,6 @@
 {
   "name": "vue-imgcut",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "vue mobile image clippings",
   "main": "index.js",
   "scripts": {
@@ -14,7 +14,7 @@
     "url": "https://github.com/746655242/vue-imgcut"
   },
   "keywords": [
-    "vue-imgCut"
+    "vue-imgcut"
   ],
   "author": "746655242@qq.com",
   "license": "ISC"

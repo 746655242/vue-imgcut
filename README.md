@@ -2,8 +2,6 @@
 
 vue mobile image clipping
 
-
-
 ## Install
 
 ``` bash
@@ -11,21 +9,14 @@ vue mobile image clipping
 npm install vue-imgcut --save
 ```
 
-## Usage
 
-
-``` javascript
-import {imgCut} from 'vue-imgcut'
-
-```
-
-### Using the v-touch directive
+###  vue-imgcut Instructions for use 
 
 ``` html
 
 <imgCut ref="Uppicinput" @callback="callback" :width="200" :height="200"></imgCut>
 
-
+import {imgCut} from 'vue-imgcut'
 export default {
     components:{
        imgCut
