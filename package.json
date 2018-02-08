@@ -1,6 +1,6 @@
 {
   "name": "vue-imgcut",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "vue mobile image clippings",
   "main": "index.js",
   "scripts": {
@@ -8,6 +8,10 @@
   },
   "dependencies": {
     "hammerjs": "^2.0.8"
+  },
+  "devDependencies": {
+    "less": "^2.7.3",
+    "less-loader": "^4.0.5"
   },
   "repository": {
     "type": "git",
