@@ -1,0 +1,21 @@
+{
+  "name": "vue-imgCut",
+  "version": "1.0.0",
+  "description": "vue mobile image clippings",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "hammerjs": "^2.0.8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/746655242/vue-imgCut"
+  },
+  "keywords": [
+    "vue-imgCut"
+  ],
+  "author": "746655242@qq.com",
+  "license": "ISC"
+}
