@@ -32,7 +32,7 @@ export default {
 	},
 	methods:{
 		callback(img){
-			thie.imgsrc=img
+			this.imgsrc=img
 			//console.log(imgss)
 		}
 	}
