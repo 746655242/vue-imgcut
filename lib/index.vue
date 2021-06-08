@@ -30,7 +30,6 @@
 </template>
 <script>
 
-import "./exif.js"
 import Hammer from "hammerjs"
 export default {
     name:'Uppic',
@@ -78,13 +77,12 @@ export default {
             default:function(){
                 return {}
             }
-
         }
     },
     methods:{ 
-        fileclick(){
-            this.$refs.file.click()
-        },
+        // fileclick(){
+        //     this.$refs.file.click()
+        // },
         getsrc(e){
             let me=this
             let files=e.target.files[0]
@@ -103,13 +101,9 @@ export default {
             me.img.Yw=picImg.naturalWidth
             me.img.Yh=picImg.naturalHeight
 
-			EXIF.getData(picImg, function(){
-                me.img.Orientation=EXIF.getTag(this, 'Orientation')||1;
-                me.sizeimg()
-            });	
-           
+            me.sizeimg();
             document.body.onresize=me.sizeimg;
-            
+        
             let mc=new Hammer.Manager(this.$refs.uppicBox)
             mc.add(new Hammer.Pan({ threshold: 0, pointers: 0 }));
 			mc.add(new Hammer.Pinch({threshold: 0})).recognizeWith(mc.get('pan'));
@@ -133,27 +127,23 @@ export default {
             /* 设置截取框长宽 */
             if(w*me.height<h*me.width){ 
                 Width=w-40;
-                Height= Width/me.width*me.height 
+                Height= Width;
             }else{ 
                 Height=h-40;
-                Width= Height/me.height*me.width 
+                Width= Height;
             }
-       
             this.Cwidth=Width;
             this.Cheight=Height;				
-
-           
+          
             /*设置原图片 iPhone图片 */
-            if(Yw*Height<Yh*Width){
+            if(Yw<Yh){
                 /* 以宽为基准缩放 */
                 me.img.w=Width
-                me.img.h=this.browser()=='iphone'?Yw*Width/Yh:Yh*Width/Yw
-            
+                me.img.h=Yh*Width/Yw;
             }else{
                 /* 以高为基准缩放 */
                 me.img.h=Height
-                me.img.w=this.browser()=='iphone'?Yh*Height/Yw :Yw*Height/Yh
-                
+                me.img.w=Yw*Height/Yh
             }
             
            
@@ -187,7 +177,6 @@ export default {
             }
 			this.transform.x=this.x+ev.deltaX;
             this.transform.y=this.y+ev.deltaY;
-            
             this.isbg=true
             console.log('移动')
         },
@@ -261,15 +250,11 @@ export default {
             let ty=this.transform.y;
             
             
-            
             let top=(this.img.h*scale-this.Cheight)/2
             let left=(this.img.w*scale-this.Cwidth)/2
-            let bili
-            if(this.browser()=='iphone'){
-                bili=this.img.Yh/(this.img.w*scale)
-            }else{
-                bili=this.img.Yh/(this.img.h*scale)
-            }
+           
+            let bili=this.img.Yh/(this.img.h*scale)
+            
 
             let sw=this.Cwidth*bili
             let sh=this.Cheight*bili
@@ -282,101 +267,19 @@ export default {
             canvas.height = dh;//设置canvas宽
             
             let Orientation=me.img.Orientation
-            if(Orientation>1){
-                this.drawPhoto(image,Orientation,function(img,shuoxiao){
-                    context.drawImage(img,sx/shuoxiao,sy/shuoxiao,sw/shuoxiao,sh/shuoxiao,0,0,dw,dh);//向画布上绘制图像
-                    var imageData = canvas.toDataURL('image/jpg');
-                    me.$emit('callback',imageData,me.data)
-                    me.cancel()
-                })
-            }else{
-                context.drawImage(image,sx,sy,sw,sh,0,0,dw,dh);//向画布上绘制图像
-                var imageData = canvas.toDataURL('image/jpg');//设置格式  
-                this.$emit('callback',imageData,me.data)
-                this.cancel()
-            }
+            context.drawImage(image,sx,sy,sw,sh,0,0,dw,dh);//向画布上绘制图像
+            var imageData = canvas.toDataURL('image/jpg');//设置格式  
+            this.$emit('callback',imageData,me.data)
+            this.cancel()
+            
         },
-        drawPhoto:function(img,dir,next){
-			 var image=new Image();
-			 image.onload=function(){
-				  var degree=0,drawWidth,drawHeight,width,height,shuoxiao;
-				  drawWidth=this.naturalWidth;
-				  drawHeight=this.naturalHeight;
-				  //以下改变一下图片大小
-				  var maxSide = Math.max(drawWidth, drawHeight);
-				  if (maxSide > 1024) {
-					var minSide = Math.min(drawWidth, drawHeight);
-					shuoxiao=maxSide/1024;
-					minSide = minSide / maxSide * 1024;
-					maxSide = 1024;
-					if (drawWidth > drawHeight) {
-					  drawWidth = maxSide;
-					  drawHeight = minSide;
-					} else {
-					  drawWidth = minSide;
-					  drawHeight = maxSide;
-					}
-				  }
-				
-				var canvas = document.createElement("canvas");
-				canvas.width=width=drawWidth;
-			    canvas.height=height=drawHeight; 
-			    var context=canvas.getContext('2d');
-				switch(dir){
-                    //iphone横屏拍摄，此时home键在左侧
-                    case 3:
-                    degree=180;
-                    drawWidth=-width;
-                    drawHeight=-height;
-                    break;
-                    //iphone竖屏拍摄，此时home键在下方(正常拿手机的方向)
-                    case 6:
-                    canvas.width=height;
-                    canvas.height=width; 
-                    degree=90;
-                    drawWidth=width;
-                    drawHeight=-height;
-                    break;
-                    //iphone竖屏拍摄，此时home键在上方
-                    case 8:
-                    canvas.width=height;
-                    canvas.height=width; 
-                    degree=270;
-                    drawWidth=-width;
-                    drawHeight=height;
-                    break;
-                }
-			  
-			//使用canvas旋转校正
-			  context.rotate(degree*Math.PI/180);
-			  context.drawImage(this,0,0,drawWidth,drawHeight);			
-                var imageData = canvas.toDataURL('image/jpg');//设置格式  
-                var img=new Image()
-                img.src=imageData
-                img.onload=function(){
-                    next(this,shuoxiao);  
-                }
-			}	
-			image.src=img.src;		
-        },
-        browser(){
-            let ua = navigator.userAgent.toLowerCase()
-            let vendor=navigator.vendor.toLowerCase()
-            if (/iphone|ipad|ipod/.test(ua)&&/apple/.test(vendor)) {
-                return 'iphone'		
-            }else if (/android/.test(ua)) {
-                return "android"	
-            }else{
-                return 'pc'
-            }
-        }
     },
     watch:{
         
     }
 }
 </script>
-<style lang="less">
+<style lang="less" scoped>
 html,body{height: 100%;}
 #uppic{
     position: relative;
@@ -438,7 +341,7 @@ html,body{height: 100%;}
         #pic-img{ position:absolute; top:50%; left:50%; width: auto;}
     }
 }
-#uppicBox,.imageBox{ background:#000; position:fixed; top:0; left:0;right:0;bottom:0; z-index:999999; cursor:pointer;}
+#uppicBox,.imageBox{ background:#000; position:fixed; top:0; left:0;right:0;bottom:0; z-index:9999; cursor:pointer;}
 
 </style>
 

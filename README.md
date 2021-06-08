@@ -12,7 +12,7 @@ npm install vue-imgcut --save
 ###  vue-imgcut Instructions for use 
 
 ``` html
-<imgCut  @callback="callback" :width="200" :height="200">
+<imgCut ref="Uppicinput" @callback="callback" :width="200" :height="200">
 	<div>上传按钮</div>
 </imgCut>
 
@@ -32,7 +32,7 @@ export default {
 	},
 	methods:{
 		callback(img){
-			this.imgsrc=img
+			thie.imgsrc=img
 			//console.log(imgss)
 		}
 	}

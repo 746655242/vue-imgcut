@@ -1,25 +1,55 @@
 {
-  "name": "vue-imgcut",
-  "version": "1.0.5",
-  "description": "vue mobile image clippings",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "_from": "vue-imgcut",
+  "_id": "vue-imgcut@1.0.6",
+  "_inBundle": false,
+  "_integrity": "sha512-28nboqCj+LshYjp2sc55qJdrlVp8eKkoDyhVD/RKtBhNuSpVgTZVH42Fx1qcodJvF7s1RFjxluMn9kefhDffNg==",
+  "_location": "/vue-imgcut",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "vue-imgcut",
+    "name": "vue-imgcut",
+    "escapedName": "vue-imgcut",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
   },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/vue-imgcut/-/vue-imgcut-1.0.5.tgz",
+  "_shasum": "d51cf6bdf6ff742471d8a3761013b80280485983",
+  "_spec": "vue-imgcut",
+  "_where": "D:\\web\\git\\eagle_web",
+  "author": {
+    "name": "746655242@qq.com"
+  },
+  "bugs": {
+    "url": "https://github.com/746655242/vue-imgcut/issues"
+  },
+  "bundleDependencies": false,
   "dependencies": {
     "hammerjs": "^2.0.8"
   },
+  "deprecated": false,
+  "description": "vue mobile image clippings",
   "devDependencies": {
-    "less": "^2.7.3",
-    "less-loader": "^4.0.5"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/746655242/vue-imgcut"
-  },
+  "homepage": "https://github.com/746655242/vue-imgcut#readme",
   "keywords": [
     "vue-imgcut"
   ],
-  "author": "746655242@qq.com",
-  "license": "ISC"
+  "license": "ISC",
+  "main": "index.js",
+  "name": "vue-imgcut",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/746655242/vue-imgcut.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.6"
 }
