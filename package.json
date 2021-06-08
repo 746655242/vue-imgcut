@@ -1,6 +1,6 @@
 {
   "_from": "vue-imgcut",
-  "_id": "vue-imgcut@1.0.7",
+  "_id": "vue-imgcut@1.0.8",
   "_inBundle": false,
   "_integrity": "sha512-28nboqCj+LshYjp2sc55qJdrlVp8eKkoDyhVD/RKtBhNuSpVgTZVH42Fx1qcodJvF7s1RFjxluMn9kefhDffNg==",
   "_location": "/vue-imgcut",
@@ -51,5 +51,5 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "1.0.7"
+  "version": "1.0.8"
 }

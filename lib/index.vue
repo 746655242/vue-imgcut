@@ -131,10 +131,10 @@ export default {
             /* 设置截取框长宽 */
             if(w*me.height<h*me.width){ 
                 Width=w-40;
-                Height= Width;
+                Height= Width/me.width*me.height 
             }else{ 
                 Height=h-40;
-                Width= Height;
+                Width= Height/me.height*me.width 
             }
             this.Cwidth=Width;
             this.Cheight=Height;				
