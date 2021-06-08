@@ -32,7 +32,7 @@
 
 import Hammer from "hammerjs"
 export default {
-    name:'Uppic',
+    name:'imgCut',
     data(){
         return{  
             transform:{
@@ -71,6 +71,10 @@ export default {
         height:{
             type:Number,
             default:200
+        },
+        maxscale:{
+            type:Number,
+            default:5
         },
         data:{
             type:Object,
@@ -155,20 +159,20 @@ export default {
 		},
         doubletap(e){
             let scale=this.transform['scale']
-            if(scale<4){
+            if(scale<this.maxscale){
                 this.transform['scale']=scale*1.4;
             }
-            console.log('双击')
+            // console.log('双击')
         },
         pinchin(ev){
             if(ev.type == 'pinchstart') {
 				this.initScale = this.transform.scale || 1;
             }
             let scale=this.initScale*ev.scale
-            if(scale<4){
+            if(scale<this.maxscale){
                 this.transform.scale=scale
             }
-            console.log('缩放')
+            // console.log('缩放')
         },
         Pan(ev){
             if(ev.type == 'panstart') {
@@ -178,7 +182,7 @@ export default {
 			this.transform.x=this.x+ev.deltaX;
             this.transform.y=this.y+ev.deltaY;
             this.isbg=true
-            console.log('移动')
+            // console.log('移动')
         },
         panend(){
             let me=this
